@@ -2,6 +2,7 @@ const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 
 const PORT = process.env.PORT || 3000;
+const API_ENDPOINT = process.env.API_ENDPOINT || `http://localhost:${PORT}/api`;
 
 const swaggerDefinition = {
   openapi: '3.0.0',
@@ -12,7 +13,7 @@ const swaggerDefinition = {
   },
   servers: [
     {
-      url: `http://localhost:${PORT}/api`,
+      url: API_ENDPOINT,
     },
   ],
   components: {

@@ -7,11 +7,18 @@ This API allows users to find treasure boxes within a specified distance and pri
 
 ## Endpoints
 
-- **GET /api/auth**: generate autohrization token and use it to /api/v2/treasures
+- **POST /api/auth/login**: generate autohrization token upon login and use it to /api/v2/treasures
 - **GET /api/v2/treasures**: Find treasures within a distance or and prize value with authorization
 - **GET /api/treasures**: Find treasures within a distance or and prize value.
 
-## Setup
+
+
+## Prerequisites
+Before you can run the application, make sure you have the following installed on your system:
+- visit this readme File: https://github.com/wlabesamis/mysql-server/blob/main/README.md
+
+
+## Setup API
 
 1. Clone the repository.
     > git clone https://github.com/wlabesamis/kitra-api
@@ -33,6 +40,14 @@ Run tests using Jest:
 ```bash
 npm test
 ```
+
+## Production API endpoint
+- **POST https://kitra.wlabesamis.website/api/auth/login**: generate autohrization token upon login and use it to /api/v2/treasures
+- **GET https://kitra.wlabesamis.website/api/v2/treasures**: Find treasures within a distance or and prize value with authorization
+- **GET https://kitra.wlabesamis.website/api/treasures**: Find treasures within a distance or and prize value.
+
+## Swagger UI/DOCS
+https://kitra.wlabesamis.website/api-docs
 
 ## Directory Structure
 ```

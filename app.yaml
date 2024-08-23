@@ -1,0 +1,22 @@
+service: kitra
+runtime: nodejs22
+env: standard
+handlers:
+  - url: /.*
+    script: auto
+
+instance_class: B1  # Customize as needed, e.g., F2 for more resources
+
+manual_scaling:
+  instances: 1
+
+beta_settings:
+  cloud_sql_instances: "proven-catcher-250001:us-central1:kitra-mysql-8-us-central1"
+
+env_variables:
+  DB_HOST: 34.27.35.163
+  DB_NAME: kitra_db
+  DB_USER: kitra_user
+  DB_PASS: kitra_password
+  API_ENDPOINT: https://kitra.wlabesamis.website/api
+  NODE_ENV: production
