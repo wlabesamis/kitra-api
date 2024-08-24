@@ -33,7 +33,7 @@ const router = express.Router();
  * @swagger
  * /treasures:
  *   get:
- *     summary: Find treasures within a specified distance and or by prize value
+ *     summary: Find treasures within a specified distance and or by prize value,  without requiring authorization
  *     tags: [Treasure]
  *     parameters:
  *       - in: query
@@ -77,7 +77,7 @@ const router = express.Router();
  * @swagger
  * /v2/treasures:
  *   get:
- *     summary: Find treasures within a specified distance and or by prize value with Authorization
+ *     summary: Find treasures within a specified distance and or by prize value requires authorization
  *     tags: [Treasure]
  *     security:
  *       - bearerAuth: []
@@ -119,8 +119,38 @@ const router = express.Router();
  *                 $ref: '#/components/schemas/Treasure'
  */
 
+
+/**
+ * Route to get treasures based on query parameters without requiring authorization.
+ * 
+ * This route:
+ * - Validates query parameters using `validateTreasureQuery` middleware.
+ * - Passes the validated request to the `getTreasures` controller.
+ * 
+ * @function
+ * @name getTreasures
+ * @memberof module:routes/treasures
+ * @param {string} path - The route path `/treasures`.
+ * @param {Array<Function>} [middlewares] - Array of middleware functions, including `validateTreasureQuery`.
+ * @param {Function} handler - The controller function `getTreasures` to handle the request.
+ */
 router.get('/treasures', validateTreasureQuery, getTreasures);
 
+/**
+ * Route to get treasures based on query parameters requires authorization.
+ * 
+ * This route:
+ * - Authenticates the request using `authenticateToken` middleware.
+ * - Validates query parameters using `validateTreasureQuery` middleware.
+ * - Passes the validated request to the `getTreasures` controller.
+ * 
+ * @function
+ * @name getTreasuresWithAuth
+ * @memberof module:routes/treasures
+ * @param {string} path - The route path `/v2/treasures`.
+ * @param {Array<Function>} [middlewares] - Array of middleware functions, including `authenticateToken` and `validateTreasureQuery`.
+ * @param {Function} handler - The controller function `getTreasures` to handle the request.
+ */
 router.get('/v2/treasures', authenticateToken, validateTreasureQuery, getTreasures); //this route settings has an authentication
 
 module.exports = router; 
