@@ -174,12 +174,34 @@ This API allows users to find treasure boxes within a specified distance and pri
     ```
 4. Run the server: `npm start`.
 
-## 2. Testing
+## 3. Testing
 
 Run tests using Jest:
 ```bash
 npm test
 ```
+
+## 4. Code documentation (JSDoc Documentation)
+This project uses JSDoc comments to document the codebase, ensuring clarity and ease of maintenance. To generate HTML documentation from these comments:
+
+### 1. Install JSDoc:
+
+```
+npm install -g jsdoc
+```
+
+### 2. Generate Documentation:
+ Run the following command in your project directory:
+
+```
+jsdoc ./ -r -d jsdocs
+```
+- ./: Specifies the source directory.
+- -r: Recursively includes files in subdirectories.
+- -d docs: Outputs the generated documentation to the docs folder.
+
+### 3. View Documentation:
+Open the index.html file inside the docs folder in your browser to view the generated documentation.
 
 ## Directory Structure
 ```

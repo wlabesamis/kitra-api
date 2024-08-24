@@ -1,5 +1,15 @@
 const db = require('../config/database');
 
+
+/**
+ * Finds the nearest treasure within a specified distance from given coordinates.
+ *
+ * @param {number} lat - The latitude of the current location.
+ * @param {number} lng - The longitude of the current location.
+ * @param {number} distance - The maximum distance in kilometers to search for treasures.
+ * @returns {Promise<Array>} A promise that resolves to an array containing the nearest treasure details.
+ */
+
 const findTreasuresWithinDistance = async (lat, lng, distance) => {
   const query = `
     SELECT t.id, t.name, t.latitude, t.longitude, MIN(mv.amt) as prize_value
@@ -13,6 +23,16 @@ const findTreasuresWithinDistance = async (lat, lng, distance) => {
   return results;
 };
 
+
+/**
+ * Finds treasures within a specified distance and with a specific prize value from given coordinates.
+ *
+ * @param {number} lat - The latitude of the current location.
+ * @param {number} lng - The longitude of the current location.
+ * @param {number} distance - The maximum distance in kilometers to search for treasures.
+ * @param {number} prizeValue - The exact prize value to filter treasures.
+ * @returns {Promise<Array>} A promise that resolves to an array of treasures matching the criteria.
+ */
 const findTreasuresWithPrizeValue = async (lat, lng, distance, prizeValue) => {
   const query = `
     SELECT t.id, t.name, t.latitude, t.longitude, mv.amt
