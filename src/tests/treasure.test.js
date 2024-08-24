@@ -7,12 +7,20 @@ const password = process.env.TEST_PASSWORD;
 let token = process.env.EXPIRED_TOKEN;
 
 /**
- * Test suite for the /api/treasures endpoints without authorization.
+ * @module treasuresTests
+ * @description Test suite for the `/api/treasures` and `/api/v2/treasures` endpoints.
+ */
+
+/**
+ * @function
+ * @name testTreasuresWithoutAuth
+ * @description Test suite for the `/api/treasures` endpoints without authorization.
  */
 describe('GET /api/treasures', () => {
 
    /**
-   * Test case to ensure the endpoint returns treasures within a 1km radius.
+   * @test
+   * @description Ensures that the endpoint returns treasures within a 1km radius.
    * Sends a GET request with latitude, longitude, and distance query parameters.
    * Expects a 200 status code and an array of treasures in the response.
    */
@@ -28,7 +36,8 @@ describe('GET /api/treasures', () => {
   });
 
   /**
-   * Test case to ensure the endpoint returns treasures with a prize value of $15 within a 10km radius.
+   * @test
+   * @description Ensures that the endpoint returns treasures with a prize value of $15 within a 10km radius.
    * Sends a GET request with latitude, longitude, distance, and prizeValue query parameters.
    * Expects a 200 status code and an array of treasures where each treasure has a prize value of 15.
    */
@@ -47,12 +56,15 @@ describe('GET /api/treasures', () => {
 })
 
 /**
- * Test suite for the /api/v2/treasures endpoints with authorization.
+ * @function
+ * @name testTreasuresWithAuth
+ * @description Test suite for the `/api/v2/treasures` endpoints with authorization.
  */
 describe('GET /api/v2/treasures', () => {
 
   /**
-   * Test case to ensure the endpoint returns a 403 status code for an invalid token.
+   * @test
+   * @description Ensures that the endpoint returns a 403 status code for an invalid token.
    * Sends a GET request with an expired token and query parameters.
    * Expects a 403 status code and 'Forbidden' error message in the response.
    */
@@ -70,7 +82,8 @@ describe('GET /api/v2/treasures', () => {
   });
 
   /**
-   * Test case to ensure the endpoint returns a 401 status code for unauthorized requests.
+   * @test
+   * @description Ensures that the endpoint returns a 401 status code for unauthorized requests.
    * Sends a GET request without an authorization token and query parameters.
    * Expects a 401 status code and 'Unauthorized' error message in the response.
    */
@@ -87,8 +100,9 @@ describe('GET /api/v2/treasures', () => {
   });
 
   /**
-   * Test case to obtain a valid token by logging in.
-   * Sends a POST request to the /api/auth/login endpoint with user credentials.
+   * @test
+   * @description Obtains a valid token by logging in.
+   * Sends a POST request to the `/api/auth/login` endpoint with user credentials.
    * Expects a 200 status code and a token in the response.
    */
   it('should return token', async () => {
@@ -106,7 +120,8 @@ describe('GET /api/v2/treasures', () => {
   });
 
   /**
-   * Test case to ensure the endpoint returns treasures within a 1km radius using a valid token.
+   * @test
+   * @description Ensures that the endpoint returns treasures within a 1km radius using a valid token.
    * Sends a GET request with a valid token and query parameters.
    * Expects a 200 status code and an array of treasures in the response.
    */
@@ -125,7 +140,8 @@ describe('GET /api/v2/treasures', () => {
   });
 
   /**
-   * Test case to ensure the endpoint returns treasures with a prize value of $15 within a 10km radius using a valid token.
+   * @test
+   * @description Ensures that the endpoint returns treasures with a prize value of $15 within a 10km radius using a valid token.
    * Sends a GET request with a valid token and query parameters.
    * Expects a 200 status code and an array of treasures where each treasure has a prize value of 15.
    */

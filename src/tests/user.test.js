@@ -7,14 +7,22 @@ const user = process.env.TEST_USER;
 const password = process.env.TEST_PASSWORD;
 
 /**
- * Test suite for the /api/auth/login endpoint.
+ * @module authTests
+ * @description Test suite for the authentication endpoints.
+ */
+
+/**
+ * @function
+ * @name testLogin
+ * @description Tests for the `/api/auth/login` endpoint.
  */
 describe('GET /api/auth/login', () => {
 
-   /**
-   * Test case to ensure the endpoint returns a token for valid user credentials.
-   * Sends a POST request with valid email and password.
-   * Expects a 200 status code, 'success' status in the response, and a token.
+  /**
+   * @test
+   * @description Tests successful login with valid credentials.
+   * Sends a POST request to `/api/auth/login` with valid email and password.
+   * Expects a 200 status code, a 'success' status, and a token in the response.
    */
   it('should return token', async () => {
     const res = await request(app)
@@ -30,9 +38,10 @@ describe('GET /api/auth/login', () => {
   });
 
   /**
-   * Test case to ensure the endpoint returns an error for invalid email or password.
-   * Sends a POST request with incorrect email and password.
-   * Expects a 401 status code, 'error' status in the response, and an appropriate error message.
+   * @test
+   * @description Tests login with invalid email or password.
+   * Sends a POST request to `/api/auth/login` with incorrect email and password.
+   * Expects a 401 status code, an 'error' status, and a specific error message.
    */
   it('should return invalid email or password', async () => {
     const res = await request(app)
@@ -48,9 +57,10 @@ describe('GET /api/auth/login', () => {
   });
 
   /**
-   * Test case to ensure the endpoint returns validation errors for malformed input.
-   * Sends a POST request with invalid email and password format.
-   * Expects a 400 status code and an array of validation errors.
+   * @test
+   * @description Tests login with invalid input formats.
+   * Sends a POST request to `/api/auth/login` with an invalid email and password.
+   * Expects a 400 status code and an array of validation errors in the response.
    */
   it('should return error', async () => {
     const res = await request(app)
