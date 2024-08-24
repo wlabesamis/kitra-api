@@ -9,10 +9,11 @@
  * @param {Error} err - The error object, which contains information about the error.
  * @param {Object} req - The Express request object, which triggered the error.
  * @param {Object} res - The Express response object, used to send back the error response.
+ * @param {Function} next - The next middleware function in the Express pipeline
  * 
  * @returns {void} Sends a JSON response with an appropriate status code and error message.
  */
-module.exports = (err, req, res) => {
+module.exports = (err, req, res, next) => {
     console.error(err.stack);
 
     if (err.name === 'UnauthorizedError') {

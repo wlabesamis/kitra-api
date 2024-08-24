@@ -6,7 +6,16 @@ let token = process.env.EXPIRED_TOKEN;
 const user = process.env.TEST_USER;
 const password = process.env.TEST_PASSWORD;
 
+/**
+ * Test suite for the /api/auth/login endpoint.
+ */
 describe('GET /api/auth/login', () => {
+
+   /**
+   * Test case to ensure the endpoint returns a token for valid user credentials.
+   * Sends a POST request with valid email and password.
+   * Expects a 200 status code, 'success' status in the response, and a token.
+   */
   it('should return token', async () => {
     const res = await request(app)
                   .post('/api/auth/login')
@@ -20,6 +29,11 @@ describe('GET /api/auth/login', () => {
     expect(res.body).toHaveProperty('token');
   });
 
+  /**
+   * Test case to ensure the endpoint returns an error for invalid email or password.
+   * Sends a POST request with incorrect email and password.
+   * Expects a 401 status code, 'error' status in the response, and an appropriate error message.
+   */
   it('should return invalid email or password', async () => {
     const res = await request(app)
                   .post('/api/auth/login')
@@ -33,6 +47,11 @@ describe('GET /api/auth/login', () => {
     expect(res.body.message).toEqual('Invalid email or password')
   });
 
+  /**
+   * Test case to ensure the endpoint returns validation errors for malformed input.
+   * Sends a POST request with invalid email and password format.
+   * Expects a 400 status code and an array of validation errors.
+   */
   it('should return error', async () => {
     const res = await request(app)
                   .post('/api/auth/login')

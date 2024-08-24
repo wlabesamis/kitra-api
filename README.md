@@ -72,7 +72,7 @@ This API allows users to find treasure boxes within a specified distance and pri
             "name": "string",
             "latitude": "float",
             "longitude": "float",
-            "prize_value": int
+            "prizeValue": int
             }
         ]
         }
@@ -113,7 +113,7 @@ This API allows users to find treasure boxes within a specified distance and pri
             "name": "string",
             "latitude": "float",
             "longitude": "float",
-            "prize_value": int
+            "prizeValue": int
             }
         ]
         }

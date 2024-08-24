@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/server.js",
-    "test": "jest --detectOpenHandles --coverage --forceExit --silent"
+    "test": "jest --detectOpenHandles --coverage --forceExit --silent --verbose"
   },
   "keywords": [],
   "author": "",
