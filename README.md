@@ -163,6 +163,7 @@ This API allows users to find treasure boxes within a specified distance and pri
 
 1. Clone the repository.
     > git clone https://github.com/wlabesamis/kitra-api
+    > cd kitra-api
 2. Install dependencies: `npm install`.
 3. Set up `.env` with your database credentials.
     ```
